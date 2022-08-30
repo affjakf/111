@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ssm?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+
+    username: root
+    password: yz
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #公共配置 以及 设置启用环境
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      table-prefix: tbl_
+#  configuration:
+#    #配置打印日志 sql的组合过程
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+  boot:
+    admin:
+      client:
+        #        该配置是连接Admin服务端的地址
+        url: http://localhost:8080
+#      该配置是管理该客户端能被服务端看到什么内容
+#ex:健康 线程等  如果想要看到全部的信息 就配第二个
+#如果想配置某一些 就例如第一种配置
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      author: yzstu
+      name: @project.artifactId@
+      version: @project.version@
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+server:
+  port: 8082
+
+
+tools:
+  ip:
+    cycle: 10
+    cycle-reset: false
+    model: "detail"
+
